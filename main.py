@@ -1,10 +1,10 @@
 #import wave, struct, os
 from openai import OpenAI
 
-client = OpenAI(
-    api_key="sk-oDj6r8Ox2aQCQfBmxPh2IQ", # set this!!!
-    base_url="https://nova-litellm-proxy.onrender.com" # and this!!!
-)
+# client = OpenAI(
+#     api_key="sk-oDj6r8Ox2aQCQfBmxPh2IQ", # set this!!!
+#     base_url="https://nova-litellm-proxy.onrender.com" # and this!!!
+# )
 class Chatbot:
     def __init__(self, options):
         self.client = OpenAI(
@@ -15,7 +15,7 @@ class Chatbot:
         for i in options: 
             dietary_restrictions += i + ", "
 
-        content = "You are an assistant, to help people find options for their dietary restrictions. Give all resopnses in concise bullet point form. In the next few prompts, I will provide a zipcode and/or a restaurant menu. Give food or restaurant options strictly from the menu to consider the following combination of dietary restrictions: " + dietary_restrictions
+        content = "You are an assistant, to help people find options for their dietary restrictions. Give all resopnses in concise bullet point form. In the next few prompts, I will provide a zipcode or a restaurant menu. Give food or restaurant options strictly from the menu to consider the following combination of dietary restrictions: " + dietary_restrictions
 
         self.context = [
             {"role": "system", "content": content},

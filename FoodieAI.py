@@ -10,8 +10,14 @@ with st.form("location"):
 
     submitted_1 = st.form_submit_button()
 
+inter = Intermediary()
+
 if submitted_1:
+    # print(zipcode)
+    inter.set_restrictions([])
     st.header("Restaurant Recomendations", divider = "gray")
+    # print(inter.input_zip(zipcode))
+    st.write(inter.input_zip(zipcode))
 
 with st.form("dietary_restrictions"):
     # Stores the dietary restrictions as a list
@@ -25,10 +31,10 @@ with st.form("dietary_restrictions"):
     submitted_2 = st.form_submit_button()
 
 if submitted_2:
-    inter = Intermediary()
     inter.set_restrictions(options)
     st.header("Menu Recommendations", divider = "gray")
-    st.write(inter.input_website(web))
+    st.write(inter.input_website(rst))
 
+options = []
 st.image("logo2.png")
 # Get your output back

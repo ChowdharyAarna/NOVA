@@ -11,8 +11,8 @@ class Intermediary():
         self.chatbot.chat(link)
         return self.chatbot.get_bot_response()
     
-    def input_zip(self, zipcode, options):
-        message = f"Find nearby restaurants in {zipcode} that are guaranteed to have {options} options"
+    def input_zip(self, zipcode):
+        message = f"List some restaurantes in the zipcode: {zipcode}"
         self.chatbot.chat(message)
         return self.chatbot.get_bot_response()
 # test = Intermediary()
