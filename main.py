@@ -6,10 +6,19 @@ client = OpenAI(
     base_url="https://nova-litellm-proxy.onrender.com" # and this!!!
 )
 class Chatbot:
-    def __init__(self, client):
-        self.client = client
+    def __init__(self, options):
+        self.client = OpenAI(
+            api_key="sk-oDj6r8Ox2aQCQfBmxPh2IQ",
+            base_url="https://nova-litellm-proxy.onrender.com"
+        )
+        dietary_restrictions = ""
+        for i in options: 
+            dietary_restrictions += ", " + i
+
+        content = "You are an assistant, to help people find options for their dietary restrictions. Give all resopnses in concise bullet point form. The current dietary restrictions to search for are : " + dietary_restrictions
+
         self.context = [
-            {"role": "system", "content": "You are an assistant, to help people find options for their dietary restrictions. Give all resopnses in concise bullet point form."},
+            {"role": "system", "content": content},
         ]
         self.total_messages = 0;
         self.cur_message = []
@@ -36,12 +45,14 @@ class Chatbot:
         self.total_messages += 1
 
     def print_cur_message(self):
-        # print(self.context)
         for message in self.cur_message:
             if message["role"] == "user":
                 print(f'USER: {message["content"]}')
             elif message["role"] == "assistant":
                 print(f'BOT: {message["content"]}')
+    
+    def get_bot_response(self):
+        return self.cur_message[1]["content"]
     
     def print_chat(self):
         for message in self.context:
@@ -51,15 +62,16 @@ class Chatbot:
                 print(f'BOT: {message["content"]}')
 
 
+# options = ["vegetarian", "gluten free"]
 
-chatbot = Chatbot(client)
+# chatbot = Chatbot(options)
 
-client_input = input()
+# client_input = input()
 
-while(client_input != "quit"):
-    chatbot.chat(client_input)
-    chatbot.print_cur_message()
-    client_input = input()
-    # print(client_input)
+# while(client_input != "quit"):
+#     chatbot.chat(client_input)
+#     chatbot.print_cur_message()
+#     client_input = input()
+#     # print(client_input)
 
-print("exited loop")
+# print("exited loop")
