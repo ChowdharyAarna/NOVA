@@ -1,6 +1,9 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
+from intermediary import Intermediary
+
+intermed = Intermediary()
 
 st.title("Being Vegetarian is :green[COOL] :sunglasses:")
 st.write("Are you a vegetarian and don't know where to find good vegetarian options. Don't worry VeggieAI got you covered.")
@@ -10,6 +13,7 @@ with st.form("dietary_restrictions"):
     st.text_input("Restaurant Website URL:")
     # Every form must have a submit button.
     submitted = st.form_submit_button("Submit")
+    intermed.set_restrictions(options)
 
     
 
