@@ -3,17 +3,16 @@ import pandas as pd
 import numpy as np
 
 st.title("Being Vegetarian is :green[COOL] :sunglasses:")
-veg = st.button("Are you a vegetarian?")
-options = st.multiselect("What dietary restrictions do you have?",
-    ["Vegetarian", "Gluten Free", "Low-Carb", "Nut Allergies", "Lactose Intolerant"]
-)
-df = pd.DataFrame(
-    np.random.randn(500,2) / [100, 100] + [2000, 1000],
-    columns=["lat", "lon"],
-)
-st.map(df)
+st.write("Are you a vegetarian and don't know where to find good vegetarian options. Don't worry VeggieAI got you covered.")
+with st.form("dietary_restrictions"):
+    options = st.multiselect("What dietary restrictions do you have?",
+    ["Vegetarian", "Gluten Free", "Low-Carb", "Nut Allergies", "Lactose Intolerant"])
+    st.text_input("Restaurant Website URL:")
+    # Every form must have a submit button.
+    submitted = st.form_submit_button("Submit")
 
-add_selectbox = st.sidebar.text_input("How restaurant would you like to eat at?")
+    
+
+restaurants = st.sidebar.text_input("Which restaurants would you like to eat at?")
 
 # Get your output back
-st.write()
