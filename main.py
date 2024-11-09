@@ -13,9 +13,9 @@ class Chatbot:
         )
         dietary_restrictions = ""
         for i in options: 
-            dietary_restrictions += ", " + i
+            dietary_restrictions += i + ", "
 
-        content = "You are an assistant, to help people find options for their dietary restrictions. Give all resopnses in concise bullet point form. The current dietary restrictions to search for are : " + dietary_restrictions
+        content = "You are an assistant, to help people find options for their dietary restrictions. Give all resopnses in concise bullet point form. In the next few prompts, I will provide a zipcode and/or a restaurant menu. Give food or restaurant options strictly from the menu to consider the following combination of dietary restrictions: " + dietary_restrictions
 
         self.context = [
             {"role": "system", "content": content},

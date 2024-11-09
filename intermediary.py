@@ -10,9 +10,13 @@ class Intermediary():
     def input_website(self, link):
         self.chatbot.chat(link)
         return self.chatbot.get_bot_response()
-
-test = Intermediary()
-options = ["vegetarian"]
-test.set_restrictions(options)
-web = "https://sammamish.cafesinc.com/Userfiles/Docs/breakfastLunch2024.pdf"
-print(test.input_website(web))
+    
+    def input_zip(self, zipcode, options):
+        message = f"Find nearby restaurants in {zipcode} that are guaranteed to have {options} options"
+        self.chatbot.chat(message)
+        return self.chatbot.get_bot_response()
+# test = Intermediary()
+# options = ["vegetarian"]
+# test.set_restrictions(options)
+# web = "https://sammamish.cafesinc.com/Userfiles/Docs/breakfastLunch2024.pdf"
+# print(test.input_website(web))
