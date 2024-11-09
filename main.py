@@ -9,7 +9,7 @@ class Chatbot:
     def __init__(self, client):
         self.client = client
         self.context = [
-            {"role": "system", "content": "You are an assistant, to help vegetarians find vegetarian options on restaurants' money. Give all resopnses in concise bullet point form."},
+            {"role": "system", "content": "You are an assistant, to help people find options for their dietary restrictions. Give all resopnses in concise bullet point form."},
         ]
         self.total_messages = 0;
         self.cur_message = []
