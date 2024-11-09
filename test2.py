@@ -9,7 +9,7 @@ class Chatbot:
     def __init__(self, client):
         self.client = client
         self.context = [
-            {"role": "system", "content": "You are an assistant, to help vegetarians find vegetarian options on restaurants' money."},
+            {"role": "system", "content": "You are an assistant, to help vegetarians find vegetarian options on restaurants' money. Give all resopnses in concise bullet point form."},
         ]
         self.total_messages = 0;
         self.cur_message = []
@@ -56,7 +56,10 @@ chatbot = Chatbot(client)
 
 client_input = input()
 
-# while(input != "quit"):
-#     chatbot.chat(client_input)
-#     chatbot.print_cur_message()
-#     client_input = input()
+while(client_input != "quit"):
+    chatbot.chat(client_input)
+    chatbot.print_cur_message()
+    client_input = input()
+    # print(client_input)
+
+print("exited loop")
